@@ -1,0 +1,646 @@
+import { Community, Leader, Program, EventItem, Announcement, GalleryItem, YouthMember, CMSContent } from '../types';
+
+export const OFFICIAL_LOGO_PATH = '/public/assets/aistudio/WhatsApp_Image_2026-11-09_at_12.05.00_PM_eaa47f46.jpeg';
+export const OFFICIAL_MOTTO = 'Peace and Unity in Development';
+
+export const INITIAL_COMMUNITIES: Community[] = [
+  {
+    id: 'comm-1',
+    name: 'Pepesa',
+    code: 'PEP-01',
+    zone: 'North Zone',
+    description: 'Mining catchment youth center focused on heavy machinery certification, electrical fabrication, and TVET trade mastery.',
+    coordinatorName: 'Kwame Mensah',
+    coordinatorPhone: '+233 24 123 4501',
+    coordinatorEmail: 'coordinator.pepesa@uyzn.org',
+    registeredYouthCount: 142,
+    keyProjects: ['Heavy Machinery Certification', 'Pepesa Youth Farm Co-op', 'Electrical Apprentice Guild'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-2',
+    name: 'New Tokunaso',
+    code: 'NTK-02',
+    zone: 'North Zone',
+    description: 'Agricultural tech and digital literacy hub empowering young agri-entrepreneurs and sustainable greenhouse farmers.',
+    coordinatorName: 'Abena Osei',
+    coordinatorPhone: '+233 24 123 4502',
+    coordinatorEmail: 'coordinator.tokunaso@uyzn.org',
+    registeredYouthCount: 98,
+    keyProjects: ['Greenhouse Organic Farming', 'Digital Skills & Literacy Lab'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-3',
+    name: 'Bankyim',
+    code: 'BNK-03',
+    zone: 'Central Zone',
+    description: 'Urban youth hub in Tarkwa township focusing on enterprise incubators, corporate mentorship, and vocational trades.',
+    coordinatorName: 'Emmanuel Appiah',
+    coordinatorPhone: '+233 24 123 4503',
+    coordinatorEmail: 'coordinator.bankyim@uyzn.org',
+    registeredYouthCount: 215,
+    keyProjects: ['Tarkwa Tech Incubator', 'Welding & Fabrication Hub', 'Youth Commercial Micro-Credit'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-4',
+    name: 'Akyempim',
+    code: 'AKY-04',
+    zone: 'Central Zone',
+    description: 'Youth development zone promoting STEM education, technical apprenticeships, and secondary school mentorship.',
+    coordinatorName: 'Grace Ansah',
+    coordinatorPhone: '+233 24 123 4504',
+    coordinatorEmail: 'coordinator.akyempim@uyzn.org',
+    registeredYouthCount: 180,
+    keyProjects: ['Akyempim STEM Mentorship', 'Youth Savings & Enterprise Association'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-5',
+    name: 'Charleykrom',
+    code: 'CHK-05',
+    zone: 'South Zone',
+    description: 'Artisanal skills, garment fabrication, and community health awareness network center.',
+    coordinatorName: 'Samuel Kwofie',
+    coordinatorPhone: '+233 24 123 4505',
+    coordinatorEmail: 'coordinator.charleykrom@uyzn.org',
+    registeredYouthCount: 88,
+    keyProjects: ['Tailoring & Fashion Academy', 'Community Health Patrol & First Aid'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-6',
+    name: 'Cape Town',
+    code: 'CPT-06',
+    zone: 'Central Zone',
+    description: 'Youth sports development, civic engagement, and leadership capacity building zone.',
+    coordinatorName: 'Josephine Boateng',
+    coordinatorPhone: '+233 24 123 4506',
+    coordinatorEmail: 'coordinator.capetown@uyzn.org',
+    registeredYouthCount: 110,
+    keyProjects: ['UYZN Sports & Athletics Academy', 'Leadership Roundtable Forum'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-7',
+    name: 'Teberebie',
+    code: 'TEB-07',
+    zone: 'South Zone',
+    description: 'High-density community center specializing in mining supply chain sub-contracting training and safety compliance.',
+    coordinatorName: 'Isaac Gyasi',
+    coordinatorPhone: '+233 24 123 4507',
+    coordinatorEmail: 'coordinator.teberebie@uyzn.org',
+    registeredYouthCount: 230,
+    keyProjects: ['Mining Safety & Compliance Certification', 'Teberebie Micro-Credit Scheme'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-8',
+    name: 'Mile 7',
+    code: 'M7-08',
+    zone: 'East Zone',
+    description: 'Transit commercial zone focusing on small business management, transport logistics, and trade skills.',
+    coordinatorName: 'Patricia Addo',
+    coordinatorPhone: '+233 24 123 4508',
+    coordinatorEmail: 'coordinator.mile7@uyzn.org',
+    registeredYouthCount: 95,
+    keyProjects: ['Logistics & Transport Skill Training', 'Youth Commerce Hub'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-9',
+    name: 'Adieye',
+    code: 'ADI-09',
+    zone: 'South Zone',
+    description: 'Youth environmental reclamation, solar installation, and eco-forestry project catchment.',
+    coordinatorName: 'Francis Kojo Baah',
+    coordinatorPhone: '+233 24 123 4509',
+    coordinatorEmail: 'coordinator.adieye@uyzn.org',
+    registeredYouthCount: 165,
+    keyProjects: ['Land Reclamation Nursery', 'Adieye Solar Apprenticeship Initiative'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-10',
+    name: 'New Techiman',
+    code: 'NTC-10',
+    zone: 'North Zone',
+    description: 'Vocational training hub focused on carpentry, masonry, electrical installation, and industrial maintenance.',
+    coordinatorName: 'Dorcas Asare',
+    coordinatorPhone: '+233 24 123 4510',
+    coordinatorEmail: 'coordinator.techiman@uyzn.org',
+    registeredYouthCount: 124,
+    keyProjects: ['Electrical Wiring Certification', 'Construct Tech Guild'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-11',
+    name: 'New Makessim',
+    code: 'NMK-11',
+    zone: 'East Zone',
+    description: 'Community enterprise zone supporting young women entrepreneurs in food processing and hospitality.',
+    coordinatorName: 'Ebenezer Quayson',
+    coordinatorPhone: '+233 24 123 4511',
+    coordinatorEmail: 'coordinator.makessim@uyzn.org',
+    registeredYouthCount: 76,
+    keyProjects: ['Women in Mining Supply Enterprise', 'Catering & Hospitality Hub'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-12',
+    name: 'Nkyemia',
+    code: 'NKY-12',
+    zone: 'East Zone',
+    description: 'Youth literacy, ICT access, and secondary education assistance catchment.',
+    coordinatorName: 'Rita Owusu',
+    coordinatorPhone: '+233 24 123 4512',
+    coordinatorEmail: 'coordinator.nkyemia@uyzn.org',
+    registeredYouthCount: 64,
+    keyProjects: ['WASSCE Preparation Classes', 'Youth Library & Resource Project'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-13',
+    name: 'Timber Road',
+    code: 'TBR-13',
+    zone: 'West Zone',
+    description: 'Woodwork, industrial fabrication, auto mechanics, and technical skill development zone.',
+    coordinatorName: 'Daniel Takyi',
+    coordinatorPhone: '+233 24 123 4513',
+    coordinatorEmail: 'coordinator.timberroad@uyzn.org',
+    registeredYouthCount: 132,
+    keyProjects: ['Auto Mechanics Workshop', 'Industrial Woodwork Co-op'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-14',
+    name: 'Wangarakrom',
+    code: 'WGK-14',
+    zone: 'West Zone',
+    description: 'Cultural arts, heritage preservation, and youth civic advocacy center.',
+    coordinatorName: 'Hannah Frimpong',
+    coordinatorPhone: '+233 24 123 4514',
+    coordinatorEmail: 'coordinator.wangarakrom@uyzn.org',
+    registeredYouthCount: 89,
+    keyProjects: ['Cultural Troupe & Heritage Arts', 'Civic Rights & Advocacy Forum'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-15',
+    name: 'Badukrom',
+    code: 'BDK-15',
+    zone: 'West Zone',
+    description: 'Youth health empowerment, anti-malaria drive, sanitation, and clean water council.',
+    coordinatorName: 'Patrick Donkor',
+    coordinatorPhone: '+233 24 123 4515',
+    coordinatorEmail: 'coordinator.badukrom@uyzn.org',
+    registeredYouthCount: 92,
+    keyProjects: ['Clean Water Sanitation Brigade', 'First Aid Response Corps'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-16',
+    name: 'Abonpinisu',
+    code: 'ABP-16',
+    zone: 'South Zone',
+    description: 'Sub-catchment community focused on youth aquaculture, commercial fish farming, and vegetable greenhouses.',
+    coordinatorName: 'Priscilla Arthur',
+    coordinatorPhone: '+233 24 123 4516',
+    coordinatorEmail: 'coordinator.abonpinisu@uyzn.org',
+    registeredYouthCount: 71,
+    keyProjects: ['Tilapia Fish Farming Cooperative', 'Hydroponic Vegetable Pilot'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-17',
+    name: 'Awudua',
+    code: 'AWD-17',
+    zone: 'North Zone',
+    description: 'Traditional divisional capital youth assembly promoting chieftaincy youth advisory, ICT, and heritage skills.',
+    coordinatorName: 'Nana Kobina Kantu',
+    coordinatorPhone: '+233 24 123 4517',
+    coordinatorEmail: 'coordinator.awudua@uyzn.org',
+    registeredYouthCount: 195,
+    keyProjects: ['Awudua ICT Center', 'Traditional Youth Leadership Forum'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-18',
+    name: 'Essuaso',
+    code: 'ESS-18',
+    zone: 'South Zone',
+    description: 'Mining host community youth council supporting local content employment placement and apprenticeship desks.',
+    coordinatorName: 'Beatrice Damptey',
+    coordinatorPhone: '+233 24 123 4518',
+    coordinatorEmail: 'coordinator.essuaso@uyzn.org',
+    registeredYouthCount: 160,
+    keyProjects: ['AngloGold Ashanti Local Placement Desk', 'Essuaso Youth Center'],
+    status: 'Active'
+  },
+  {
+    id: 'comm-19',
+    name: 'Nsuta-Prestea Extension (19th Slot)',
+    code: 'NPE-19',
+    zone: 'North Zone',
+    description: 'Official 19th community slot under administrative integration review for full territorial mapping.',
+    coordinatorName: 'Pending Appointment',
+    coordinatorPhone: '+233 24 000 0000',
+    coordinatorEmail: 'admin@uyzn.org',
+    registeredYouthCount: 45,
+    keyProjects: ['Territorial Integration Survey'],
+    isEditable19thSlot: true,
+    status: 'Pending Registration'
+  }
+];
+
+export const INITIAL_LEADERS: Leader[] = [
+  {
+    id: 'lead-1',
+    name: 'Dr. Christian Dese Agbesi',
+    roleTitle: 'President & Executive Chairman',
+    category: 'President',
+    email: 'president@uyzn.org',
+    phone: '+233 24 400 1100',
+    bio: 'Visionary president and development architect dedicated to fostering peace, unity, and economic empowerment across the 19 communities of the AngloGold Ashanti Tarkwa catchment area in Ghana.',
+    image: '/src/assets/images/uyzn_president_portrait_1794230979741.jpg',
+    order: 1
+  },
+  {
+    id: 'lead-2',
+    name: 'Hon. Michael K. Obeng',
+    roleTitle: 'Vice President & Strategy Director',
+    category: 'Executive',
+    email: 'vp@uyzn.org',
+    phone: '+233 24 400 1101',
+    bio: 'Oversees organizational strategy, corporate partnerships, and stakeholder alignment with AngloGold Ashanti, municipal assemblies, and local traditional councils.',
+    image: '/src/assets/images/uyzn_hero_banner_1794230979061.jpg',
+    order: 2
+  },
+  {
+    id: 'lead-3',
+    name: 'Lawrencia Adjei-Barwuah',
+    roleTitle: 'General Secretary & Data Director',
+    category: 'Executive',
+    email: 'secretary@uyzn.org',
+    phone: '+233 24 400 1102',
+    bio: 'Leads the UYZN Youth Data Registry initiative, institutional governance, and youth census operations across all 19 communities.',
+    image: '/src/assets/images/uyzn_skills_workshop_1794230979671.jpg',
+    order: 3
+  },
+  {
+    id: 'lead-4',
+    name: 'Kwame Mensah',
+    roleTitle: 'Pepesa Community Coordinator',
+    category: 'Coordinator',
+    communityName: 'Pepesa',
+    email: 'coordinator.pepesa@uyzn.org',
+    phone: '+233 24 123 4501',
+    bio: 'Coordinates youth registration, vocational trade enrollments, and community forums in Pepesa.',
+    image: '/src/assets/images/uyzn_community_tarkwa_1794230978876.jpg',
+    order: 4
+  },
+  {
+    id: 'lead-5',
+    name: 'Isaac Gyasi',
+    roleTitle: 'Teberebie Community Coordinator',
+    category: 'Coordinator',
+    communityName: 'Teberebie',
+    email: 'coordinator.teberebie@uyzn.org',
+    phone: '+233 24 123 4507',
+    bio: 'Directs local employment desks and mining safety certification drives for Teberebie youth.',
+    image: '/src/assets/images/uyzn_community_tarkwa_1794230978876.jpg',
+    order: 5
+  }
+];
+
+export const INITIAL_PROGRAMS: Program[] = [
+  {
+    id: 'prog-1',
+    title: 'Tarkwa Mining & Technical Trade Academy',
+    category: 'Skills Training',
+    description: 'Intensive 12-week heavy equipment operation, electrical wiring, and certified welding training for youth across all 19 catchment communities under Dr. Christian Dese Agbesi’s leadership.',
+    targetAudience: 'Unemployed youth aged 18-35',
+    location: 'Central Technical Hub, Bankyim',
+    startDate: '2026-11-15',
+    endDate: '2027-02-15',
+    participantCount: 250,
+    status: 'Ongoing',
+    image: '/src/assets/images/uyzn_skills_workshop_1794230979671.jpg'
+  },
+  {
+    id: 'prog-2',
+    title: 'UYZN Young Agri-Entrepreneur Seed Fund',
+    category: 'Entrepreneurship',
+    description: 'Grant funding, greenhouse equipment support, and agronomy mentorship for 50 young farmers in Pepesa, New Tokunaso, and Abonpinisu.',
+    targetAudience: 'Self-employed & aspiring agri-entrepreneurs',
+    location: 'New Tokunaso Demonstration Farm',
+    startDate: '2026-10-01',
+    endDate: '2027-04-30',
+    participantCount: 120,
+    status: 'Ongoing',
+    image: '/src/assets/images/uyzn_community_tarkwa_1794230978876.jpg'
+  },
+  {
+    id: 'prog-3',
+    title: 'AngloGold Local Content Youth Employment Drive',
+    category: 'Employment Drive',
+    description: 'Direct recruitment portal connecting verified UYZN registered youth with sub-contractors operating in the Tarkwa mining concession.',
+    targetAudience: 'Verified UYZN Youth Members',
+    location: 'Essuaso & Teberebie Centers',
+    startDate: '2026-12-01',
+    endDate: '2027-05-31',
+    participantCount: 380,
+    status: 'Upcoming',
+    image: '/src/assets/images/uyzn_hero_banner_1794230979061.jpg'
+  }
+];
+
+export const INITIAL_EVENTS: EventItem[] = [
+  {
+    id: 'event-1',
+    title: 'UYZN Annual Youth Leadership & Economic Summit 2026',
+    community: 'Bankyim',
+    date: '2026-11-28',
+    time: '09:00 AM - 04:30 PM',
+    location: 'Tarkwa Municipal Hall, Bankyim',
+    category: 'Summit',
+    description: 'Keynote address by President Dr. Christian Dese Agbesi on the official motto "Peace and Unity in Development", youth inclusion in mining supply chains, and sustainable community growth.',
+    rsvpCount: 420,
+    status: 'Upcoming'
+  },
+  {
+    id: 'event-2',
+    title: 'Youth Census & Digital Registration Drive - Pepesa & Teberebie',
+    community: 'Pepesa',
+    date: '2026-12-05',
+    time: '08:30 AM - 03:00 PM',
+    location: 'Pepesa Community Center',
+    category: 'Community Forum',
+    description: 'On-site digital youth registration, biometric data audit, and career counseling session.',
+    rsvpCount: 185,
+    status: 'Upcoming'
+  },
+  {
+    id: 'event-3',
+    title: 'Women in Vocational Trades Workshop',
+    community: 'Akyempim',
+    date: '2026-10-18',
+    time: '10:00 AM - 02:00 PM',
+    location: 'Akyempim Social Center',
+    category: 'Workshop',
+    description: 'Practical workshop on solar installation and electrical maintenance for young women.',
+    rsvpCount: 140,
+    status: 'Completed'
+  }
+];
+
+export const INITIAL_ANNOUNCEMENTS: Announcement[] = [
+  {
+    id: 'ann-1',
+    title: 'President Dr. Christian Dese Agbesi Flags Off Phase 2 Catchment Data Audit',
+    category: 'Press Release',
+    summary: 'UYZN launches full demographic verification across all 19 communities in AngloGold Ashanti Tarkwa Catchment.',
+    content: 'The President of UYZN, Dr. Christian Dese Agbesi, has officially flagged off the 2026 Youth Data Audit under our motto "Peace and Unity in Development". All community coordinators are instructed to update member records and submit monthly reports via the UYZN Digital Hub.',
+    date: '2026-11-02',
+    author: 'Presidential Secretariat',
+    isPinned: true
+  },
+  {
+    id: 'ann-2',
+    title: 'Call for Applications: 2027 Mining Vocational Scholarship Scheme',
+    category: 'Youth Alert',
+    summary: 'Full tuition support for 100 registered youth in welding, heavy machinery, and electrical engineering.',
+    content: 'Applications are now open for verified UYZN members in Pepesa, Teberebie, Bankyim, Awudua, and Essuaso for the 2027 Technical Scholarship.',
+    date: '2026-10-25',
+    author: 'Skills Development Committee',
+    isPinned: false
+  }
+];
+
+export const INITIAL_GALLERY: GalleryItem[] = [
+  {
+    id: 'gal-1',
+    title: 'UYZN Youth Leadership Conference',
+    category: 'Leadership',
+    imageUrl: '/src/assets/images/uyzn_hero_banner_1794230979061.jpg',
+    caption: 'President Dr. Christian Dese Agbesi and executive members addressing delegates from 19 communities.',
+    date: '2026-10-12'
+  },
+  {
+    id: 'gal-2',
+    title: 'Tarkwa Tech & Computer Skills Workshop',
+    category: 'Skills Training',
+    imageUrl: '/src/assets/images/uyzn_skills_workshop_1794230979671.jpg',
+    caption: 'Young men and women learning digital hardware diagnostics and coding in Bankyim.',
+    date: '2026-09-28'
+  },
+  {
+    id: 'gal-3',
+    title: 'Pepesa Community Youth Forum',
+    category: 'Community Forums',
+    imageUrl: '/src/assets/images/uyzn_community_tarkwa_1794230978876.jpg',
+    caption: 'Youth leaders discussing local employment opportunities with AngloGold Ashanti sub-contractors.',
+    date: '2026-09-15'
+  }
+];
+
+export const INITIAL_CMS: CMSContent = {
+  presidentName: 'Dr. Christian Dese Agbesi',
+  presidentTitle: 'President & Executive Chairman, Unity Youth Zone Network (UYZN)',
+  presidentMessage: `Warm greetings to the vibrant youth across our 19 cherished communities in the AngloGold Ashanti Tarkwa catchment area. The Unity Youth Zone Network (UYZN) was established on the bedrock of our enduring emblem and motto: "Peace and Unity in Development".
+
+Our primary mission under my leadership is clear: to connect every young citizen, capture accurate youth demographic data, unlock high-value TVET trade skills, and create direct pathways into gainful employment, sustainable entrepreneurship, and visionary leadership.
+
+Together, through 'One Network, Nineteen Communities, One Vision', we are constructing an unshakeable digital foundation for our collective future. I encourage all young men and women in Pepesa, Bankyim, Teberebie, Awudua, Essuaso, and every corner of our network to register on our digital hub today.`,
+  missionStatement: 'To unite, empower, and advocate for young people across the 19 communities of the AngloGold Ashanti Tarkwa Catchment through accurate youth data collection, quality education, vocational skills development, local employment creation, and sustainable entrepreneurship anchored on Peace and Unity in Development.',
+  visionStatement: 'To serve as a premier model of youth-driven community transformation in Ghana, where every young person possesses market-ready skills, economic dignity, and leadership capacity within a unified network.',
+  coreValues: ['Peace & Unity in Development', 'Data Integrity', 'Youth Empowerment', 'Accountability', 'Sustainable Growth'],
+  contactEmail: 'info@uyzn.org',
+  contactPhone: '+233 31 232 0400',
+  contactAddress: 'UYZN Executive Secretariat, Commercial Street, Bankyim-Tarkwa, Western Region, Ghana'
+};
+
+export const INITIAL_YOUTH_MEMBERS: YouthMember[] = [
+  {
+    id: 'UYZN-2026-0001',
+    fullName: 'Kofi Owusu-Ansah',
+    gender: 'Male',
+    dateOfBirth: '1998-05-14',
+    age: 28,
+    phone: '+233 24 555 0101',
+    email: 'kofi.owusu@gmail.com',
+    community: 'Pepesa',
+    residentialLocation: 'House No. P-42, Pepesa Central',
+    educationLevel: 'SHS / WASSCE',
+    institutionAttended: 'Tarkwa Senior High School',
+    employmentStatus: 'unemployed',
+    occupation: 'Seeking Heavy Machinery Operator Trainee',
+    skills: ['Welding Basics', 'Drive License Class C', 'First Aid'],
+    areasOfInterest: ['Mining Supply Chain', 'Tech & Digital Skills'],
+    entrepreneurshipStatus: 'Aspiring Entrepreneur',
+    membershipStatus: 'Verified Member',
+    emergencyContact: {
+      name: 'Abena Owusu',
+      phone: '+233 24 555 0199',
+      relationship: 'Mother'
+    },
+    registrationDate: '2026-01-15',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0002',
+    fullName: 'Akosua Serwaa Boateng',
+    gender: 'Female',
+    dateOfBirth: '2001-09-22',
+    age: 25,
+    phone: '+233 24 555 0102',
+    email: 'serwaa.boateng@yahoo.com',
+    community: 'Bankyim',
+    residentialLocation: 'Plot 18, Commercial Street, Bankyim',
+    educationLevel: 'Undergraduate Degree',
+    institutionAttended: 'University of Mines and Technology (UMaT), Tarkwa',
+    employmentStatus: 'employed',
+    occupation: 'Environmental Safety Junior Specialist',
+    skills: ['GIS Mapping', 'Environmental Sampling', 'Data Analytics', 'Public Speaking'],
+    areasOfInterest: ['Tech & Digital Skills', 'Leadership'],
+    entrepreneurshipStatus: 'Not Interested',
+    businessName: '',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-01-20',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0003',
+    fullName: 'Kwabena Mensah Gyasi',
+    gender: 'Male',
+    dateOfBirth: '2003-03-10',
+    age: 23,
+    phone: '+233 24 555 0103',
+    email: 'km.gyasi@outlook.com',
+    community: 'Teberebie',
+    residentialLocation: 'Teberebie New Site, Block B',
+    educationLevel: 'TVET / Vocational',
+    institutionAttended: 'Tarkwa Technical Institute',
+    employmentStatus: 'self-employed',
+    occupation: 'Certified Electrical Fabricator',
+    skills: ['Electrical Wiring', 'Solar Panel Installation', 'Transformer Maintenance'],
+    areasOfInterest: ['Small Business', 'Mining Supply Chain'],
+    entrepreneurshipStatus: 'Active Business Owner',
+    businessName: 'Gyasi Power & Solar Solutions',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-02-04',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0004',
+    fullName: 'Ama Darkowaa',
+    gender: 'Female',
+    dateOfBirth: '2004-11-05',
+    age: 22,
+    phone: '+233 24 555 0104',
+    community: 'New Tokunaso',
+    residentialLocation: 'Tokunaso Agriculture Junction',
+    educationLevel: 'SHS / WASSCE',
+    institutionAttended: 'Fiaseman Senior High School',
+    employmentStatus: 'student',
+    occupation: 'Student / Agri-Business Trainee',
+    skills: ['Organic Farming', 'Agri-Marketing', 'Record Keeping'],
+    areasOfInterest: ['Agriculture', 'Small Business'],
+    entrepreneurshipStatus: 'Aspiring Entrepreneur',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-02-12',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0005',
+    fullName: 'Yaw Addo-Kufuor',
+    gender: 'Male',
+    dateOfBirth: '1997-07-30',
+    age: 29,
+    phone: '+233 24 555 0105',
+    email: 'yaw.kufuor@uyzn.org',
+    community: 'Awudua',
+    residentialLocation: 'Awudua Palace Road, House 7',
+    educationLevel: 'Diploma / HND',
+    institutionAttended: 'Takoradi Technical University',
+    employmentStatus: 'employed',
+    occupation: 'Sub-contractor Logistics Officer',
+    skills: ['Inventory Control', 'Fleet Management', 'AutoCAD'],
+    areasOfInterest: ['Mining Supply Chain', 'Leadership'],
+    entrepreneurshipStatus: 'Active Business Owner',
+    businessName: 'Awudua Haulage Services',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-02-18',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0006',
+    fullName: 'Yaa Asantewaa Appiah',
+    gender: 'Female',
+    dateOfBirth: '1999-12-19',
+    age: 27,
+    phone: '+233 24 555 0106',
+    community: 'Essuaso',
+    residentialLocation: 'Essuaso Market Area',
+    educationLevel: 'JHS / BECE',
+    institutionAttended: 'Essuaso Methodist JHS',
+    employmentStatus: 'unemployed',
+    occupation: 'Seeking Catering & Hospitality Training',
+    skills: ['Catering', 'Customer Care', 'Event Setup'],
+    areasOfInterest: ['Small Business', 'Sports & Culture'],
+    entrepreneurshipStatus: 'Aspiring Entrepreneur',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-03-01',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0007',
+    fullName: 'Kweku Donkor',
+    gender: 'Male',
+    dateOfBirth: '2002-04-17',
+    age: 24,
+    phone: '+233 24 555 0107',
+    community: 'Akyempim',
+    residentialLocation: 'Akyempim Estate, Line 4',
+    educationLevel: 'Undergraduate Degree',
+    institutionAttended: 'UMaT Tarkwa',
+    employmentStatus: 'unemployed',
+    occupation: 'Graduate Mining Engineer',
+    skills: ['Surveying', 'Safety Auditing', 'Python Coding'],
+    areasOfInterest: ['Tech & Digital Skills', 'Mining Supply Chain'],
+    entrepreneurshipStatus: 'Not Interested',
+    membershipStatus: 'Pending Approval',
+    registrationDate: '2026-03-10',
+    consentGiven: true,
+    isActive: true
+  },
+  {
+    id: 'UYZN-2026-0008',
+    fullName: 'Esi Mansa Quayson',
+    gender: 'Female',
+    dateOfBirth: '2000-08-08',
+    age: 26,
+    phone: '+233 24 555 0108',
+    community: 'Charleykrom',
+    residentialLocation: 'Charleykrom Road, No. 12',
+    educationLevel: 'TVET / Vocational',
+    institutionAttended: 'NVTI Tarkwa',
+    employmentStatus: 'self-employed',
+    occupation: 'Fashion Designer & Seamstress',
+    skills: ['Pattern Drafting', 'Machine Embroidery', 'Garment Sewing'],
+    areasOfInterest: ['Small Business', 'Sports & Culture'],
+    entrepreneurshipStatus: 'Active Business Owner',
+    businessName: 'Mansa Couture Ghana',
+    membershipStatus: 'Verified Member',
+    registrationDate: '2026-03-14',
+    consentGiven: true,
+    isActive: true
+  }
+];

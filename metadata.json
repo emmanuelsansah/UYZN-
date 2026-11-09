@@ -1,0 +1,6 @@
+{
+  "name": "Unity Youth Zone Network (UYZN) Digital Hub",
+  "description": "Official website and digital youth data management platform for the Unity Youth Zone Network serving 19 communities across the AngloGold Ashanti Tarkwa catchment region, Ghana.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
